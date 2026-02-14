@@ -1,0 +1,326 @@
+/* ======================================================
+   Tucker Legerski — Personal Website
+   Palette: earthy browns, forest greens, deep blues
+   ====================================================== */
+
+/* ----- Reset & Base ----- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Earthy palette */
+  --brown-dark:   #3b2a1a;
+  --brown-mid:    #5c3d2e;
+  --brown-light:  #8b6f47;
+  --tan:          #c4a265;
+  --sand:         #e8dcc8;
+  --cream:        #f5f0e8;
+
+  --green-dark:   #2c4a3e;
+  --green-mid:    #3e6b5a;
+  --green-light:  #5a8a72;
+
+  --blue-deep:    #1e3a50;
+  --blue-mid:     #2d5f7c;
+  --blue-light:   #4a8aa8;
+
+  --text:         #2b2318;
+  --text-light:   #f5f0e8;
+
+  --font-serif:   'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans:    'Source Sans 3', 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text);
+  background-color: var(--cream);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ----- Shared ----- */
+.section-heading {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--brown-dark);
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.section-heading::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--green-mid);
+  margin-top: 0.6rem;
+  border-radius: 2px;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(
+      160deg,
+      var(--brown-dark) 0%,
+      var(--green-dark) 40%,
+      var(--blue-deep) 100%
+    );
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Subtle texture overlay */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(92,61,46,0.35) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(30,58,80,0.4) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+}
+
+.hero__name {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.3);
+}
+
+.hero__tagline {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 300;
+  color: var(--sand);
+  letter-spacing: 0.15em;
+  text-transform: lowercase;
+}
+
+/* ============================================
+   NAV
+   ============================================ */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--brown-dark);
+  border-bottom: 3px solid var(--green-mid);
+}
+
+.nav__list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 1rem 2rem;
+}
+
+.nav__list a {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--sand);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.nav__list a:hover,
+.nav__list a:focus-visible {
+  color: var(--green-light);
+}
+
+/* ============================================
+   ABOUT
+   ============================================ */
+.about {
+  padding: 6rem 2rem;
+  background: var(--cream);
+}
+
+.about__container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.about__photo-wrap {
+  position: relative;
+}
+
+.about__photo-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 12px -12px -12px 12px;
+  border: 3px solid var(--green-mid);
+  border-radius: 6px;
+  z-index: 0;
+}
+
+.about__photo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 8px 30px rgba(59,42,26,0.25);
+}
+
+.about__text p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--brown-mid);
+}
+
+.about__text p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   CONTACT
+   ============================================ */
+.contact {
+  padding: 6rem 2rem;
+  background: var(--green-dark);
+  color: var(--cream);
+  text-align: center;
+}
+
+.contact__container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact .section-heading {
+  color: var(--cream);
+}
+
+.contact .section-heading::after {
+  background: var(--tan);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact__note {
+  font-size: 1.1rem;
+  color: var(--sand);
+  margin-bottom: 2rem;
+}
+
+.contact__links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.contact__links a {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 2px solid var(--tan);
+  border-radius: 4px;
+  color: var(--cream);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.contact__links a:hover,
+.contact__links a:focus-visible {
+  background: var(--tan);
+  color: var(--brown-dark);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  padding: 2rem;
+  text-align: center;
+  background: var(--brown-dark);
+  color: var(--brown-light);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .about__container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about__photo-wrap {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .about__text .section-heading::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nav__list {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__tagline {
+    letter-spacing: 0.08em;
+  }
+
+  .about {
+    padding: 4rem 1.5rem;
+  }
+
+  .contact {
+    padding: 4rem 1.5rem;
+  }
+}
